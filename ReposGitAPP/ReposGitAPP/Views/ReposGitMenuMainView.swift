@@ -16,7 +16,7 @@ class ReposGitMenuMainView: UIView {
         return s
     }()
     
-    private let titleLabel = UILabel(text: "Escolha uma linguagem para visualizar os repositórios Git Hub.", font: UIFont().mainFontApp(size: 18), numberOfLines: 0, textAlignment: .center)
+    private let titleLabel = UILabel(text: "Escolha uma linguagem para visualizar os repositórios Git Hub", font: UIFont().mainFontApp(size: 18), textColor: UIColor.blueOil, numberOfLines: 0, textAlignment: .center)
     
     private let swiftButton: CustomButton = {
         let b = CustomButton(widht: 100, height: 150, backgroundColor: .red)
@@ -56,6 +56,11 @@ class ReposGitMenuMainView: UIView {
         return s
     }()
     
+    //MARK: - Variables
+    private var isIPhone_5_5s_5c_SE: Bool {
+        return UIScreen.main.nativeBounds.height == 1136
+    }
+    
     //MARK: - Initializers
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -67,7 +72,7 @@ class ReposGitMenuMainView: UIView {
     }
     
     //MARK: - Custom Methods
-        
+    
     
     
     
@@ -90,16 +95,12 @@ extension ReposGitMenuMainView {
     }
     
     private func setupConstraints() {
-
-        
-        
         containerStackView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            containerStackView.topAnchor.constraint(equalTo: topAnchor, constant: 90),
+            containerStackView.topAnchor.constraint(equalTo: topAnchor, constant: isIPhone_5_5s_5c_SE ? 90 : 150),
             containerStackView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 10),
             containerStackView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -10)
         ])
-
     }
 }
 
@@ -114,13 +115,3 @@ private extension UILabel {
         self.textAlignment = textAlignment
     }
 }
-
-private extension UIStackView {
-    convenience init(axis: NSLayoutConstraint.Axis = .horizontal, distribution: UIStackView.Distribution = .fill) {
-        self.init()
-        self.axis = axis
-        self.distribution = distribution
-    }
-}
-
-

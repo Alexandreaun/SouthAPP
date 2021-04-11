@@ -18,10 +18,10 @@ class CustomButton: UIButton {
         self.widhtBT = widht
         self.heightBT = height
         self.bkgColorBT = backgroundColor
-        configSelfButton()
+        setButtonAPP()
     }
     
-    func configSelfButton() {
+    func setButtonAPP(){
         guard let widht = widhtBT, let height = heightBT, let backGround = bkgColorBT else {
             self.widthAnchor.constraint(equalToConstant: 100).isActive = true
             self.heightAnchor.constraint(equalToConstant: 100).isActive = true
@@ -30,21 +30,22 @@ class CustomButton: UIButton {
         }
         self.widthAnchor.constraint(equalToConstant: widht).isActive = true
         self.heightAnchor.constraint(equalToConstant: height).isActive = true
-        self.backgroundColor = backGround
-        setButtonAPP()
-    }
-    
-    func setButtonAPP(){
+        
         self.addTarget(self, action: #selector(colorsBtnTouchUpInside), for: .touchUpInside)
         self.addTarget(self, action: #selector(colorsBtnTouchDown), for: .touchDown)
         self.addTarget(self, action: #selector(colorsBtnTouchUpOutside), for: .touchUpOutside)
-        self.titleLabel?.font = UIFont().mainFontApp(size: 25).bold()
+        self.titleLabel?.font = UIFont().mainFontApp(size: 20).bold()
         self.setTitleColor(UIColor.black, for: .normal)
         self.layer.masksToBounds = false
         self.layer.cornerRadius = 20
-        self.layer.borderWidth = 2
+        self.layer.borderWidth = 0.5
         self.layer.borderColor = UIColor.darkGray.cgColor
         self.alpha = 0.7
+        self.layer.shadowColor = UIColor.black.cgColor
+        self.layer.shadowOffset = CGSize(width: 0, height: 2)
+        self.layer.shadowOpacity = 0.6
+        self.layer.shadowRadius = 3
+        self.layer.backgroundColor = backGround.cgColor
     }
     
     @objc private func colorsBtnTouchUpInside() {
@@ -53,7 +54,7 @@ class CustomButton: UIButton {
             return
         }
         self.backgroundColor = background
-        self.layer.borderWidth = 2
+        self.layer.borderWidth = 0.5
         self.layer.borderColor = UIColor.darkGray.cgColor
     }
     
@@ -71,7 +72,7 @@ class CustomButton: UIButton {
             return
         }
         self.backgroundColor = background
-        self.layer.borderWidth = 2
+        self.layer.borderWidth = 0.5
         self.layer.borderColor = UIColor.darkGray.cgColor
     }
 }

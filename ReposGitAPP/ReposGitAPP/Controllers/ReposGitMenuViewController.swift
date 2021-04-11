@@ -8,15 +8,14 @@
 import UIKit
 
 class ReposGitMenuViewController: UIViewController {
-
+    
     //MARK: - Components
     private let mainView = ReposGitMenuMainView()
-
     
     //MARK: - Override Methods
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.backgroundColor = .white
+        self.view.backgroundColor = .lightGray
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -31,14 +30,13 @@ class ReposGitMenuViewController: UIViewController {
     
     private func setupNavigation() {
         navigationController?.navigationBar.barStyle = .default
-        navigationController?.navigationBar.topItem?.title = "Teste"
-        //navigationController?.navigationBar.topItem?.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "iconInfo"), style: .done, target: self, action: nil)
-        navigationController?.navigationBar.barTintColor = .green
+        navigationController?.navigationBar.topItem?.title = "Escolha a Linguagem"
+        navigationController?.navigationBar.barTintColor = .blueOil
     }
     
     private func setupView() {
         
     }
-
+    
     
 }
