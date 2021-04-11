@@ -7,9 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7A70E3D126228925001F051E /* ReposGitMenuMainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A70E3D026228925001F051E /* ReposGitMenuMainView.swift */; };
+		7A70E3D726229416001F051E /* UIStackView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A70E3D626229416001F051E /* UIStackView+Extensions.swift */; };
 		7ADC299826212F910013F071 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ADC299726212F910013F071 /* AppDelegate.swift */; };
 		7ADC299A26212F910013F071 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ADC299926212F910013F071 /* SceneDelegate.swift */; };
-		7ADC299C26212F910013F071 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ADC299B26212F910013F071 /* MenuViewController.swift */; };
+		7ADC299C26212F910013F071 /* ReposGitMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ADC299B26212F910013F071 /* ReposGitMenuViewController.swift */; };
 		7ADC29A126212F990013F071 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7ADC29A026212F990013F071 /* Assets.xcassets */; };
 		7ADC29A426212F990013F071 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7ADC29A226212F990013F071 /* LaunchScreen.storyboard */; };
 		7ADC29B7262142620013F071 /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ADC29B6262142620013F071 /* CustomButton.swift */; };
@@ -18,10 +20,12 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		7A70E3D026228925001F051E /* ReposGitMenuMainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReposGitMenuMainView.swift; sourceTree = "<group>"; };
+		7A70E3D626229416001F051E /* UIStackView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStackView+Extensions.swift"; sourceTree = "<group>"; };
 		7ADC299426212F910013F071 /* ReposGitAPP.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ReposGitAPP.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7ADC299726212F910013F071 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7ADC299926212F910013F071 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		7ADC299B26212F910013F071 /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
+		7ADC299B26212F910013F071 /* ReposGitMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReposGitMenuViewController.swift; sourceTree = "<group>"; };
 		7ADC29A026212F990013F071 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7ADC29A326212F990013F071 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		7ADC29A526212F990013F071 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -41,6 +45,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		7A70E3CF262288FE001F051E /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				7ADC299B26212F910013F071 /* ReposGitMenuViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
 		7ADC298B26212F910013F071 = {
 			isa = PBXGroup;
 			children = (
@@ -60,8 +72,9 @@
 		7ADC299626212F910013F071 /* ReposGitAPP */ = {
 			isa = PBXGroup;
 			children = (
-				7ADC29B4262141BF0013F071 /* Components */,
 				7ADC29B5262141E80013F071 /* Extensions */,
+				7ADC29B4262141BF0013F071 /* Components */,
+				7A70E3CF262288FE001F051E /* Controllers */,
 				7ADC29C226214ED80013F071 /* Views */,
 				7ADC29C1262143B60013F071 /* Worker */,
 				7ADC29C0262143AB0013F071 /* Network */,
@@ -103,6 +116,7 @@
 			isa = PBXGroup;
 			children = (
 				7ADC29BA262142D70013F071 /* UIFont+Extensions.swift */,
+				7A70E3D626229416001F051E /* UIStackView+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -124,7 +138,7 @@
 		7ADC29C226214ED80013F071 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				7ADC299B26212F910013F071 /* MenuViewController.swift */,
+				7A70E3D026228925001F051E /* ReposGitMenuMainView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -199,10 +213,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				7ADC29B7262142620013F071 /* CustomButton.swift in Sources */,
-				7ADC299C26212F910013F071 /* MenuViewController.swift in Sources */,
+				7A70E3D726229416001F051E /* UIStackView+Extensions.swift in Sources */,
+				7ADC299C26212F910013F071 /* ReposGitMenuViewController.swift in Sources */,
 				7ADC299826212F910013F071 /* AppDelegate.swift in Sources */,
 				7ADC29BB262142D70013F071 /* UIFont+Extensions.swift in Sources */,
 				7ADC299A26212F910013F071 /* SceneDelegate.swift in Sources */,
+				7A70E3D126228925001F051E /* ReposGitMenuMainView.swift in Sources */,
 				7ADC29BE2621437D0013F071 /* ValidationError.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -345,6 +361,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 7VXABSG45G;
 				INFOPLIST_FILE = ReposGitAPP/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -364,6 +381,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 7VXABSG45G;
 				INFOPLIST_FILE = ReposGitAPP/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

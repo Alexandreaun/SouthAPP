@@ -13,16 +13,16 @@ class CustomButton: UIButton {
     var heightBT: CGFloat?
     var bkgColorBT: UIColor?
     
-   convenience init(widhtBT: CGFloat?, heightBT: CGFloat?, bkgColorBT: UIColor?) {
+    convenience init(widht: CGFloat?, height: CGFloat?, backgroundColor: UIColor?) {
         self.init()
-        self.widhtBT = widhtBT
-        self.heightBT = heightBT
-        self.bkgColorBT = bkgColorBT
+        self.widhtBT = widht
+        self.heightBT = height
+        self.bkgColorBT = backgroundColor
         configSelfButton()
     }
     
     func configSelfButton() {
-        guard let widht = self.widhtBT, let height = self.heightBT, let backGround = self.bkgColorBT else {
+        guard let widht = widhtBT, let height = heightBT, let backGround = bkgColorBT else {
             self.widthAnchor.constraint(equalToConstant: 100).isActive = true
             self.heightAnchor.constraint(equalToConstant: 100).isActive = true
             self.backgroundColor = .red
@@ -39,72 +39,39 @@ class CustomButton: UIButton {
         self.addTarget(self, action: #selector(colorsBtnTouchDown), for: .touchDown)
         self.addTarget(self, action: #selector(colorsBtnTouchUpOutside), for: .touchUpOutside)
         self.titleLabel?.font = UIFont().mainFontApp(size: 25).bold()
-        self.setTitleColor(UIColor.blue, for: .normal)
+        self.setTitleColor(UIColor.black, for: .normal)
         self.layer.masksToBounds = false
         self.layer.cornerRadius = 20
         self.layer.borderWidth = 2
         self.layer.borderColor = UIColor.darkGray.cgColor
-        self.alpha = 0.6
+        self.alpha = 0.7
     }
     
     @objc private func colorsBtnTouchUpInside() {
-        self.backgroundColor = .lightGray
-           self.layer.borderWidth = 2
-           self.layer.borderColor = UIColor.darkGray.cgColor
-       }
-    
-     @objc private func colorsBtnTouchDown() {
-         self.backgroundColor = .gray
-     }
-     
-    @objc private func colorsBtnTouchUpOutside() {
-        self.backgroundColor = .lightGray
-         self.layer.borderWidth = 2
-         self.layer.borderColor = UIColor.darkGray.cgColor
-     }
-}
- 
-
-class CustomButtonCalculate: UIButton {
-    
-   override init(frame: CGRect) {
-        super.init(frame: frame)
-        setButtonCalculate()
-    }
-    
-    required init?(coder: NSCoder) {
-        super.init(coder: coder)
-        setButtonCalculate()
-    }
-    
-    func setButtonCalculate(){
-        self.addTarget(self, action: #selector(colorsBtnTouchUpInside), for: .touchUpInside)
-        self.addTarget(self, action: #selector(colorsBtnTouchDown), for: .touchDown)
-        self.addTarget(self, action: #selector(colorsBtnTouchUpOutside), for: .touchUpOutside)
-        self.titleLabel?.font = UIFont().mainFontApp(size: 25)
-        self.setTitleColor(UIColor.darkGray, for: .normal)
-        self.layer.masksToBounds = false
-        self.layer.cornerRadius = 15
+        guard let background = bkgColorBT else {
+            self.backgroundColor = .lightGray
+            return
+        }
+        self.backgroundColor = background
         self.layer.borderWidth = 2
         self.layer.borderColor = UIColor.darkGray.cgColor
-        self.alpha = 0.5
-        self.backgroundColor = .blue
     }
     
-    @objc private func colorsBtnTouchUpInside() {
-        self.backgroundColor = .blue
-           self.layer.borderWidth = 2
-           self.layer.borderColor = UIColor.darkGray.cgColor
-       }
+    @objc private func colorsBtnTouchDown() {
+        guard let background = bkgColorBT else {
+            self.backgroundColor = .gray
+            return
+        }
+        self.backgroundColor = background.withAlphaComponent(0.5)
+    }
     
-     @objc private func colorsBtnTouchDown() {
-         self.backgroundColor = .gray
-     }
-     
     @objc private func colorsBtnTouchUpOutside() {
-        self.backgroundColor = .blue
-         self.layer.borderWidth = 2
-         self.layer.borderColor = UIColor.darkGray.cgColor
-     }
+        guard let background = bkgColorBT else {
+            self.backgroundColor = .lightGray
+            return
+        }
+        self.backgroundColor = background
+        self.layer.borderWidth = 2
+        self.layer.borderColor = UIColor.darkGray.cgColor
+    }
 }
-
