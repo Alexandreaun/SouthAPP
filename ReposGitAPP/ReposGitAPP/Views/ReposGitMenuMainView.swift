@@ -6,6 +6,15 @@
 //
 
 import UIKit
+import RxRelay
+
+enum TypeButtonTapped {
+    case swiftButton
+    case objectiveCButton
+    case javaButton
+    case javaScriptButton
+    case `default`
+}
 
 class ReposGitMenuMainView: UIView {
     
@@ -20,24 +29,28 @@ class ReposGitMenuMainView: UIView {
     
     private let swiftButton: CustomButton = {
         let b = CustomButton(widht: 100, height: 150, backgroundColor: .red)
+        b.addTarget(self, action: #selector(didTapSwiftButton), for: .touchUpInside)
         b.setTitle("Swift", for: .normal)
         return b
     }()
     
     private let objectiveCButton: CustomButton = {
         let b = CustomButton(widht: 100, height: 150, backgroundColor: .orange)
+        b.addTarget(self, action: #selector(didTapObjectiveCButton), for: .touchUpInside)
         b.setTitle("Objective-C", for: .normal)
         return b
     }()
     
     private let javaButton: CustomButton = {
         let b = CustomButton(widht: 100, height: 150, backgroundColor: .gray)
+        b.addTarget(self, action: #selector(didTapJavaButton), for: .touchUpInside)
         b.setTitle("Java", for: .normal)
         return b
     }()
     
     private let javaScriptButton: CustomButton = {
         let b = CustomButton(widht: 100, height: 150, backgroundColor: .systemBlue)
+        b.addTarget(self, action: #selector(didTapJavaScriptButton), for: .touchUpInside)
         b.setTitle("JavaScript", for: .normal)
         return b
     }()
@@ -60,6 +73,7 @@ class ReposGitMenuMainView: UIView {
     private var isIPhone_5_5s_5c_SE: Bool {
         return UIScreen.main.nativeBounds.height == 1136
     }
+    private(set) public var buttonTypeTapped = BehaviorRelay<TypeButtonTapped>(value: TypeButtonTapped.default)
     
     //MARK: - Initializers
     override init(frame: CGRect) {
@@ -74,8 +88,28 @@ class ReposGitMenuMainView: UIView {
     //MARK: - Custom Methods
     
     
+    //MARK: - Actions
+    @objc
+    private func didTapSwiftButton() {
+        print("swift button")
+        buttonTypeTapped.accept(.swiftButton)
+    }
     
+    @objc
+    private func didTapObjectiveCButton() {
+        print("objectiveC button")
+        buttonTypeTapped.accept(.objectiveCButton)
+    }
     
+    @objc
+    private func didTapJavaButton() {
+        buttonTypeTapped.accept(.javaButton)
+    }
+    
+    @objc
+    private func didTapJavaScriptButton() {
+        buttonTypeTapped.accept(.javaScriptButton)
+    }
 }
 
 //MARK: - Setup Constraints
