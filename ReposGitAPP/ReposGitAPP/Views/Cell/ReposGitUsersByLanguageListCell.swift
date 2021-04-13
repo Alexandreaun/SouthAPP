@@ -127,37 +127,6 @@ extension ReposGitUsersByLanguageListCell {
             contentsStackView.leadingAnchor.constraint(equalTo: lineDivider.trailingAnchor, constant: 25),
             contentsStackView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: 0)
         ])
-//        starImageView.translatesAutoresizingMaskIntoConstraints = false
-//        NSLayoutConstraint.activate([
-//            starImageView.topAnchor.constraint(equalTo: repoLabel.bottomAnchor, constant: 10),
-//            starImageView.leadingAnchor.constraint(equalTo: lineDivider.trailingAnchor, constant: 10),
-//            starImageView.heightAnchor.constraint(equalToConstant: 30),
-//            starImageView.widthAnchor.constraint(equalToConstant: 30)
-//        ])
-//
-//        nameLabel.translatesAutoresizingMaskIntoConstraints = false
-//        NSLayoutConstraint.activate([
-//            nameLabel.topAnchor.constraint(equalTo: topAnchor, constant: 20),
-//            nameLabel.leadingAnchor.constraint(equalTo: lineDivider.trailingAnchor, constant: 10),
-//            nameLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -10),
-//            nameLabel.heightAnchor.constraint(equalToConstant: 22)
-//        ])
-//
-//        repoLabel.translatesAutoresizingMaskIntoConstraints = false
-//        NSLayoutConstraint.activate([
-//            repoLabel.topAnchor.constraint(equalTo: nameLabel.bottomAnchor, constant: 10),
-//            repoLabel.leadingAnchor.constraint(equalTo: lineDivider.trailingAnchor, constant: 10),
-//            repoLabel.rightAnchor.constraint(equalTo: rightAnchor, constant: -10),
-//            repoLabel.heightAnchor.constraint(equalToConstant: 22)
-//        ])
-//
-//        starCountLabel.translatesAutoresizingMaskIntoConstraints = false
-//        NSLayoutConstraint.activate([
-//            starCountLabel.topAnchor.constraint(equalTo: repoLabel.bottomAnchor, constant: 16),
-//            starCountLabel.leadingAnchor.constraint(equalTo: starImageView.trailingAnchor, constant: 8),
-//            starCountLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -10),
-//            starCountLabel.heightAnchor.constraint(equalToConstant: 22)
-//        ])
     }
 }
 
