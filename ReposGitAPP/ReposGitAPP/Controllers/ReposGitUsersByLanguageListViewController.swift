@@ -11,24 +11,30 @@ import RxSwift
 class ReposGitUsersByLanguageListViewController: UIViewController {
     
     //MARK: - Components
-    private(set) lazy var mainView = ReposGitUsersByLanguageListMainView(repositories: repositories)
+    private(set) lazy var mainView = ReposGitUsersByLanguageListMainView(viewModel: viewModel)
+    var viewModel: ReposGitUserByLanguageViewModelProtocol?
     
     //MARK: - Variables
     private let disposeBagUI = DisposeBag()
     private var repositories: RepositoriesGitModel?
     
     //MARK: - Initializers
-    convenience init(repositories: RepositoriesGitModel?) {
+    convenience init(viewModel: ReposGitUserByLanguageViewModelProtocol?) {
         self.init()
-        self.repositories = repositories
+        self.viewModel = viewModel
         bind()
+        title = viewModel?.title.uppercased()
     }
     
     //MARK: - Override Methods
     override func loadView() {
         super.loadView()
         view = mainView
-        title = "Repos"
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        mainView.tableview.reloadData()
     }
    
     //MARK: - Custom Methods
@@ -36,9 +42,9 @@ class ReposGitUsersByLanguageListViewController: UIViewController {
         mainView
             .didTapSelectUserObservable
             .observeOn(MainScheduler.instance)
-            .subscribe { [weak self] (isRequest) in
-                guard let self = self, let isTap = isRequest.element else { return }
-                if isTap {
+            .subscribe { [weak self] (isRequest, items) in
+                guard let self = self, let item = items else { return }
+                if isRequest {
                     let vc = ReposGitReposByUserListViewController()
                     self.navigationController?.pushViewController(vc, animated: true)
                 }

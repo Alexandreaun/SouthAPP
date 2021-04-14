@@ -8,11 +8,11 @@
 import UIKit
 import RxSwift
 
-class ReposGitMenuViewController: UIViewController {
+class ReposGitMenuViewController: BaseViewController {
     
     //MARK: - Components
     private let mainView = ReposGitMenuMainView()
-    private let viewModel = ReposGitMenuViewModel()
+    private let viewModel = ReposGitUserByLanguageViewModel()
     
     //MARK: - Variables
     private let disposeBagUI = DisposeBag()
@@ -57,17 +57,17 @@ class ReposGitMenuViewController: UIViewController {
             .subscribe { [weak self] (state) in
                 guard let self = self else { return }
                 switch state {
-                case .next(ReposGitMenuViewModelState.getUsersByLanguage(let data)):
-                    let vc = ReposGitUsersByLanguageListViewController(repositories: data)
+                case .next(ReposGitUserByLanguageViewModelState.getUsersByLanguage):
+                    let vc = ReposGitUsersByLanguageListViewController(viewModel: self.viewModel)
                     self.navigationController?.pushViewController(vc, animated: true)
-                case .next(ReposGitMenuViewModelState.isLoading(let isShow)):
-                    isShow ? "start" : "stop"
-                case .next(ReposGitMenuViewModelState.error(let error)):
+                case .next(ReposGitUserByLanguageViewModelState.isLoading(let isShow)):
+                    isShow ? self.showLoadingAnimation() : self.hiddenLoadingAnimation()
+                case .next(ReposGitUserByLanguageViewModelState.error):
+                    self.showError(buttonLabel: "OK", titleError: "Atenção", messageError: "Tivemos um problema ao solicitar as informações, por favor, verifique sua conexão de internet ou tente novamente mais tarde")
+                case .next(ReposGitUserByLanguageViewModelState.default):
                     break
-                case .next(ReposGitMenuViewModelState.default):
-                    break
-                case .error(_):
-                    break //tratar erro
+                case .error:
+                    self.showError(buttonLabel: "OK", titleError: "Atenção", messageError: "Tivemos um problema, por favor, tente novamente mais tarde")
                 case .completed:
                     break
                 }

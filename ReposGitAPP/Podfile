@@ -9,5 +9,6 @@ target 'ReposGitAPP' do
     pod 'SDWebImage'
     pod 'RxSwift', '~> 5'
     pod 'RxCocoa', '~> 5'
+    pod 'FSnapChatLoading'
 
 end

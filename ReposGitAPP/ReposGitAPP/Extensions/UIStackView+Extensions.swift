@@ -8,7 +8,6 @@
 import UIKit
 
 extension UIStackView {
-    
     func addSpace(height: CGFloat? = nil, width: CGFloat? = nil, backgroundColor: UIColor? = nil) {
         let space = UIView()
         if let _height = height {

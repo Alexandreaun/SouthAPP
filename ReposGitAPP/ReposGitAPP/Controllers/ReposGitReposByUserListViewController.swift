@@ -16,6 +16,13 @@ class ReposGitReposByUserListViewController: UIViewController {
     //MARK: - Variables
     private let disposeBagUI = DisposeBag()
     
+    //MARK: - Initializers
+//    convenience init(viewModel: ReposGitUserByLanguageViewModelProtocol?) {
+//        self.init()
+//        self.viewModel = viewModel
+//        bind()
+//       // title = viewModel?.title.uppercased()
+//    }
     
     //MARK: - Override Methods
     override func loadView() {
@@ -29,9 +36,6 @@ class ReposGitReposByUserListViewController: UIViewController {
     }
     
 
-
-
-   
     //MARK: - Custom Methods
     private func bind() {
         mainView
@@ -43,7 +47,6 @@ class ReposGitReposByUserListViewController: UIViewController {
                     let vc = ReposGitRepoDetailViewController()
                     vc.modalPresentationStyle = .fullScreen
                     self.present(vc, animated: true)
-                    //self.navigationController?.pushViewController(vc, animated: true)
                 }
             }.disposed(by: disposeBagUI)
     }

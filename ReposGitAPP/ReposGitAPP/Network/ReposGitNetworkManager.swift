@@ -40,7 +40,6 @@ class ReposGitNetworkManager {
                 
                 do {
                     let decode = JSONDecoder()
-                    decode.keyDecodingStrategy = .convertFromSnakeCase
                     let json = try decode.decode(RepositoriesGitModel.self, from: datas)
                     completion(.success(json))
                 }catch {
@@ -81,7 +80,6 @@ class ReposGitNetworkManager {
                 
                 do {
                     let decode = JSONDecoder()
-                    decode.keyDecodingStrategy = .convertFromSnakeCase
                     let json = try decode.decode([Items].self, from: datas)
                     completion(.success(json))
                 }catch {
@@ -122,7 +120,6 @@ class ReposGitNetworkManager {
                 
                 do {
                     let decode = JSONDecoder()
-                    decode.keyDecodingStrategy = .convertFromSnakeCase
                     let json = try decode.decode(Items.self, from: datas)
                     completion(.success(json))
                 }catch {
