@@ -11,26 +11,25 @@ import RxSwift
 class ReposGitUsersByLanguageListViewController: UIViewController {
     
     //MARK: - Components
-    let mainView = ReposGitUsersByLanguageListMainView()
+    private(set) lazy var mainView = ReposGitUsersByLanguageListMainView(repositories: repositories)
     
     //MARK: - Variables
     private let disposeBagUI = DisposeBag()
-
+    private var repositories: RepositoriesGitModel?
+    
+    //MARK: - Initializers
+    convenience init(repositories: RepositoriesGitModel?) {
+        self.init()
+        self.repositories = repositories
+        bind()
+    }
+    
     //MARK: - Override Methods
     override func loadView() {
         super.loadView()
         view = mainView
-        title = "tetete"
+        title = "Repos"
     }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        bind()
-    }
-    
-
-
-
    
     //MARK: - Custom Methods
     private func bind() {

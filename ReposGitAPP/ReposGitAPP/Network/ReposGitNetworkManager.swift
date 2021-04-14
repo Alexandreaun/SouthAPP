@@ -11,13 +11,7 @@ enum NetworkError: Error {
     case errorRequest(ValidationError)
 }
 
-protocol CurrenciesRequestDelegate {
-    func getUsersByLanguage(language: String, with completion: @escaping (_ result: Result<RepositoriesGitModel?, NetworkError>) -> Void)
-    func getReposByUser(login: String, with completion: @escaping (_ result: Result<[ReposByUserModel]?, NetworkError>) -> Void)
-    func getDetailRepoByUser(login: String, nameRepo: String, with completion: @escaping (_ result: Result<ReposByUserModel?, NetworkError>) -> Void)
-}
-
-class ReposGitNetworkManager: CurrenciesRequestDelegate {
+class ReposGitNetworkManager {
     
     func getUsersByLanguage(language: String, with completion: @escaping (_ result: Result<RepositoriesGitModel?, NetworkError>) -> Void) {
         
@@ -60,7 +54,7 @@ class ReposGitNetworkManager: CurrenciesRequestDelegate {
         }.resume()
     }
     
-    func getReposByUser(login: String, with completion: @escaping (_ result: Result<[ReposByUserModel]?, NetworkError>) -> Void) {
+    func getReposByUser(login: String, with completion: @escaping (_ result: Result<[Items]?, NetworkError>) -> Void) {
         
         let urlString = "https://api.github.com/users/\(login)/repos"
         let error = ValidationError(titleError: "", messageError: "Não foi possível carregar os dados")
@@ -88,7 +82,7 @@ class ReposGitNetworkManager: CurrenciesRequestDelegate {
                 do {
                     let decode = JSONDecoder()
                     decode.keyDecodingStrategy = .convertFromSnakeCase
-                    let json = try decode.decode([ReposByUserModel].self, from: datas)
+                    let json = try decode.decode([Items].self, from: datas)
                     completion(.success(json))
                 }catch {
                     let error = ValidationError(titleError: "", messageError: "Não foi possível carregar os dados")
@@ -101,7 +95,7 @@ class ReposGitNetworkManager: CurrenciesRequestDelegate {
         }.resume()
     }
     
-    func getDetailRepoByUser(login: String, nameRepo: String, with completion: @escaping (_ result: Result<ReposByUserModel?, NetworkError>) -> Void) {
+    func getDetailRepoByUser(login: String, nameRepo: String, with completion: @escaping (_ result: Result<Items?, NetworkError>) -> Void) {
         
         let urlString = "https://api.github.com/repos/\(login)/\(nameRepo)"
         let error = ValidationError(titleError: "", messageError: "Não foi possível carregar os dados")
@@ -129,7 +123,7 @@ class ReposGitNetworkManager: CurrenciesRequestDelegate {
                 do {
                     let decode = JSONDecoder()
                     decode.keyDecodingStrategy = .convertFromSnakeCase
-                    let json = try decode.decode(ReposByUserModel.self, from: datas)
+                    let json = try decode.decode(Items.self, from: datas)
                     completion(.success(json))
                 }catch {
                     let error = ValidationError(titleError: "", messageError: "Não foi possível carregar os dados")

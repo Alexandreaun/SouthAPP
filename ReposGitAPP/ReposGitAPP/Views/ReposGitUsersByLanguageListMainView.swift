@@ -23,18 +23,14 @@ class ReposGitUsersByLanguageListMainView: UIView {
     
     //MARK: - Variables
     private(set) public var didTapSelectUserObservable = BehaviorRelay<Bool>(value: false)
+    private var repositories: RepositoriesGitModel?
     
     //MARK: - Initializers
-    override init(frame: CGRect) {
-        super.init(frame: frame)
+    convenience init(repositories: RepositoriesGitModel?) {
+        self.init()
+        self.repositories = repositories
         setupView()
     }
-    
-    required init(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
-    
 }
 
 //MARK: - Auto Layout
@@ -63,7 +59,7 @@ extension ReposGitUsersByLanguageListMainView {
 extension ReposGitUsersByLanguageListMainView: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+        return repositories?.items?.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

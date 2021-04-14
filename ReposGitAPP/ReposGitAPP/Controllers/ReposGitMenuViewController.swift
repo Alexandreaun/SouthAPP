@@ -12,7 +12,7 @@ class ReposGitMenuViewController: UIViewController {
     
     //MARK: - Components
     private let mainView = ReposGitMenuMainView()
-    
+    private let viewModel = ReposGitMenuViewModel()
     
     //MARK: - Variables
     private let disposeBagUI = DisposeBag()
@@ -51,23 +51,41 @@ class ReposGitMenuViewController: UIViewController {
     }
     
     private func bind() {
+        
+        viewModel.state.asObservable()
+            .observeOn(MainScheduler.instance)
+            .subscribe { [weak self] (state) in
+                guard let self = self else { return }
+                switch state {
+                case .next(ReposGitMenuViewModelState.getUsersByLanguage(let data)):
+                    let vc = ReposGitUsersByLanguageListViewController(repositories: data)
+                    self.navigationController?.pushViewController(vc, animated: true)
+                case .next(ReposGitMenuViewModelState.isLoading(let isShow)):
+                    isShow ? "start" : "stop"
+                case .next(ReposGitMenuViewModelState.error(let error)):
+                    break
+                case .next(ReposGitMenuViewModelState.default):
+                    break
+                case .error(_):
+                    break //tratar erro
+                case .completed:
+                    break
+                }
+            }.disposed(by: disposeBagUI)
+        
         mainView.buttonTypeTapped.asObservable()
             .observeOn(MainScheduler.instance)
             .subscribe { [weak self] (typeButton) in
                 guard let self = self else { return }
                 switch typeButton {
-                case .next(TypeButtonTapped.swiftButton):
-                    let vc = ReposGitUsersByLanguageListViewController()
-                    self.navigationController?.pushViewController(vc, animated: true)
-                case .next(TypeButtonTapped.objectiveCButton):
-                    let vc = ReposGitUsersByLanguageListViewController()
-                    self.navigationController?.pushViewController(vc, animated: true)
-                case .next(TypeButtonTapped.javaButton):
-                    let vc = ReposGitUsersByLanguageListViewController()
-                    self.navigationController?.pushViewController(vc, animated: true)
-                case .next(TypeButtonTapped.javaScriptButton):
-                    let vc = ReposGitUsersByLanguageListViewController()
-                    self.navigationController?.pushViewController(vc, animated: true)
+                case .next(TypeButtonTapped.swiftButton(let language)):
+                    self.viewModel.getUsersByLanguage(language: language)
+                case .next(TypeButtonTapped.objectiveCButton(let language)):
+                    self.viewModel.getUsersByLanguage(language: language)
+                case .next(TypeButtonTapped.javaButton(let language)):
+                    self.viewModel.getUsersByLanguage(language: language)
+                case .next(TypeButtonTapped.javaScriptButton(let language)):
+                    self.viewModel.getUsersByLanguage(language: language)
                 case .next(TypeButtonTapped.default):
                     break
                 case .error(_):
@@ -76,7 +94,6 @@ class ReposGitMenuViewController: UIViewController {
                     break
                 }
             }.disposed(by: disposeBagUI)
-
     }
     
     
