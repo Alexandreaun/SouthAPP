@@ -22,20 +22,16 @@ class ReposGitReposByUserListMainView: UIView {
     }()
     
     //MARK: - Variables
-    private(set) public var didTapSelectUserObservable = BehaviorRelay<Bool>(value: false)
+    private(set) public var didTapSelectRepoObservable = BehaviorRelay<(Bool, Items?)>(value:( false, nil))
 
+    private var viewModel: ReposGitReposByUserListViewModelProtocol?
     
     //MARK: - Initializers
-    override init(frame: CGRect) {
-        super.init(frame: frame)
+    convenience init(viewModel: ReposGitReposByUserListViewModelProtocol?) {
+        self.init()
+        self.viewModel = viewModel
         setupView()
     }
-    
-    required init(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
-    
 }
 
 //MARK: - Auto Layout
@@ -64,13 +60,13 @@ extension ReposGitReposByUserListMainView {
 extension ReposGitReposByUserListMainView: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+        return viewModel?.repositoryUserData?.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableview.dequeueReusableCell(withIdentifier: ReposGitReposByUserListCell.reuseIdentifier, for: indexPath) as? ReposGitReposByUserListCell else { return UITableViewCell() }
+        guard let cell = tableview.dequeueReusableCell(withIdentifier: ReposGitReposByUserListCell.reuseIdentifier, for: indexPath) as? ReposGitReposByUserListCell, let items = viewModel?.repositoryUserData else { return UITableViewCell() }
         
-        cell.reposContents = "Teste"
+        cell.reposContents = items[indexPath.row]
         return cell
     }
     
@@ -79,6 +75,6 @@ extension ReposGitReposByUserListMainView: UITableViewDelegate, UITableViewDataS
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        didTapSelectUserObservable.accept(true)
+        didTapSelectRepoObservable.accept((true, viewModel?.repositoryUserData?[indexPath.row]))
     }
 }

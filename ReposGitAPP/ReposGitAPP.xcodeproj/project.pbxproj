@@ -10,6 +10,8 @@
 		7A0E546C2623EB5A00EBD114 /* ReposGitRepoDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A0E546B2623EB5A00EBD114 /* ReposGitRepoDetailViewController.swift */; };
 		7A0E546F2623EB7900EBD114 /* ReposGitRepoDetailMainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A0E546E2623EB7900EBD114 /* ReposGitRepoDetailMainView.swift */; };
 		7A552A5326272FAB00D5DD9D /* UIImageView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A552A5226272FAB00D5DD9D /* UIImageView+Extensions.swift */; };
+		7A552A5D2627CD4E00D5DD9D /* ReposGitReposByUserListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A552A5C2627CD4E00D5DD9D /* ReposGitReposByUserListViewModel.swift */; };
+		7A552A672627EAC400D5DD9D /* ReposGitDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A552A662627EAC400D5DD9D /* ReposGitDetailViewModel.swift */; };
 		7A56E9CA262526C700F70422 /* ReposGitNetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A56E9C9262526C700F70422 /* ReposGitNetworkManager.swift */; };
 		7A56E9CD2625282200F70422 /* RepositoriesGitModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A56E9CC2625282200F70422 /* RepositoriesGitModel.swift */; };
 		7A63EE312627227B008ADDC1 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A63EE302627227B008ADDC1 /* BaseViewController.swift */; };
@@ -41,6 +43,8 @@
 		7A0E546B2623EB5A00EBD114 /* ReposGitRepoDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReposGitRepoDetailViewController.swift; sourceTree = "<group>"; };
 		7A0E546E2623EB7900EBD114 /* ReposGitRepoDetailMainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReposGitRepoDetailMainView.swift; sourceTree = "<group>"; };
 		7A552A5226272FAB00D5DD9D /* UIImageView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Extensions.swift"; sourceTree = "<group>"; };
+		7A552A5C2627CD4E00D5DD9D /* ReposGitReposByUserListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReposGitReposByUserListViewModel.swift; sourceTree = "<group>"; };
+		7A552A662627EAC400D5DD9D /* ReposGitDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReposGitDetailViewModel.swift; sourceTree = "<group>"; };
 		7A56E9C9262526C700F70422 /* ReposGitNetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReposGitNetworkManager.swift; sourceTree = "<group>"; };
 		7A56E9CC2625282200F70422 /* RepositoriesGitModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoriesGitModel.swift; sourceTree = "<group>"; };
 		7A63EE302627227B008ADDC1 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
@@ -162,6 +166,8 @@
 			isa = PBXGroup;
 			children = (
 				7A6D3F6626268848004499E3 /* ReposGitUserByLanguageViewModel.swift */,
+				7A552A5C2627CD4E00D5DD9D /* ReposGitReposByUserListViewModel.swift */,
+				7A552A662627EAC400D5DD9D /* ReposGitDetailViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -338,6 +344,7 @@
 			files = (
 				7A63EE3C262724C8008ADDC1 /* UIViewController+Extensions.swift in Sources */,
 				7ADC29B7262142620013F071 /* CustomButton.swift in Sources */,
+				7A552A672627EAC400D5DD9D /* ReposGitDetailViewModel.swift in Sources */,
 				7A72B9D226236AF400B4E308 /* ReposGitUsersByLanguageListCell.swift in Sources */,
 				7A72B9EB2623DB1E00B4E308 /* ReposGitReposByUserListViewController.swift in Sources */,
 				7A6D3F6726268848004499E3 /* ReposGitUserByLanguageViewModel.swift in Sources */,
@@ -360,6 +367,7 @@
 				7A56E9CD2625282200F70422 /* RepositoriesGitModel.swift in Sources */,
 				7ADC29BE2621437D0013F071 /* ValidationError.swift in Sources */,
 				7A72B9F12623DBDA00B4E308 /* ReposGitReposByUserListCell.swift in Sources */,
+				7A552A5D2627CD4E00D5DD9D /* ReposGitReposByUserListViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

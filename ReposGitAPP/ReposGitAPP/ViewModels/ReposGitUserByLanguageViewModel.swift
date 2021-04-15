@@ -42,14 +42,12 @@ public class ReposGitUserByLanguageViewModel: ReposGitUserByLanguageViewModelPro
             guard let self = self else { return }
             self.title = language
             self.state.accept(ReposGitUserByLanguageViewModelState.isLoading(isShow: false))
-            DispatchQueue.main.async {
                 switch result {
                 case .success(let data):
                     self.repositoriesData = data
                     self.state.accept(ReposGitUserByLanguageViewModelState.getUsersByLanguage)
                 case .failure(let error):
                     self.state.accept(ReposGitUserByLanguageViewModelState.error(error: error))
-                }
             }
         }
     }

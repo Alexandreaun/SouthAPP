@@ -25,6 +25,12 @@ class ReposGitRepoDetailMainView: UIView {
         return v
     }()
     
+    private let arrowImageView: UIImageView = {
+        let v = UIImageView(image: UIImage(named: "arrow"))
+        v.contentMode = .scaleAspectFit
+        return v
+    }()
+    
     
     
     //MARK: - Variables
@@ -60,6 +66,7 @@ extension ReposGitRepoDetailMainView {
     private func buildHierarquie() {
         addSubview(avatarImageView)
         addSubview(contentsView)
+        contentsView.addSubview(arrowImageView)
     }
     
     private func setupConstraints() {
@@ -78,6 +85,14 @@ extension ReposGitRepoDetailMainView {
             contentsView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 0),
             contentsView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: 0),
             contentsView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: 0)
+        ])
+        
+        arrowImageView.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            arrowImageView.topAnchor.constraint(equalTo: contentsView.topAnchor, constant: 10),
+            arrowImageView.centerXAnchor.constraint(equalTo: contentsView.centerXAnchor, constant: 0),
+            arrowImageView.heightAnchor.constraint(equalToConstant: 50),
+            arrowImageView.widthAnchor.constraint(equalToConstant: 50)
         ])
         
 }

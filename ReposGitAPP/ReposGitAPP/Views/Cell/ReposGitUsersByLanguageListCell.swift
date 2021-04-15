@@ -29,8 +29,8 @@ class ReposGitUsersByLanguageListCell: UITableViewCell {
                         spacing: 10,
                         arrangedSubviews:
                             [
-                                starImageView,
-                                starCountLabel
+                                iconImageView,
+                                countLabel
                             ]
                         ,
                         alignment: .center)
@@ -42,11 +42,11 @@ class ReposGitUsersByLanguageListCell: UITableViewCell {
         return v
     }()
     
-    private let nameLabel = UILabel(font: UIFont().mainFontApp(size: 12), textColor: UIColor.black)
-    private let repoLabel = UILabel(font: UIFont().mainFontApp(size: 12), textColor: UIColor.black)
-    private let starCountLabel = UILabel(font: UIFont().mainFontApp(size: 12), textColor: UIColor.black)
+    private let nameLabel = UILabel(font: UIFont().mainFontApp(size: 12), textColor: UIColor.black, numberOfLines: 0)
+    private let repoLabel = UILabel(font: UIFont().mainFontApp(size: 12), textColor: UIColor.black, numberOfLines: 0)
+    private let countLabel = UILabel(font: UIFont().mainFontApp(size: 12), textColor: UIColor.black)
 
-    private let starImageView: UIImageView = {
+    private let iconImageView: UIImageView = {
         let v = UIImageView(image: UIImage(named: "fork"))
         v.heightAnchor.constraint(equalToConstant: 25).isActive = true
         v.widthAnchor.constraint(equalToConstant: 25).isActive = true
@@ -72,9 +72,9 @@ class ReposGitUsersByLanguageListCell: UITableViewCell {
     //MARK: - Custom Methods
     private func setupContents() {
         avatarImageView.loadSDWebImage(imageView: avatarImageView, string: reposContents?.owner?.avatarUrl ?? "")
-        nameLabel.text = "Login: \(reposContents?.owner?.login ?? "")"
-        repoLabel.text = "Nome: \(reposContents?.name ?? "")"
-        starCountLabel.text = "Forks: \(reposContents?.forks ?? 0)"
+        nameLabel.text = "Login: \(reposContents?.owner?.login ?? "-")"
+        repoLabel.text = "Nome: \(reposContents?.name ?? "-")"
+        countLabel.text = "Forks: \(reposContents?.forks ?? 0)"
     }
 }
 

@@ -95,6 +95,4 @@ class ReposGitMenuViewController: BaseViewController {
                 }
             }.disposed(by: disposeBagUI)
     }
-    
-    
 }
