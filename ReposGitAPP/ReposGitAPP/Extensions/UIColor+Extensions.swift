@@ -8,7 +8,6 @@
 import UIKit
 
 extension UIColor {
-    
     public static let greenApp: UIColor = UIColor(red:0.02, green:0.76, blue:0.65, alpha:1.00)
     public static let lightGray: UIColor = UIColor(red: 0.98, green: 0.98, blue: 0.98, alpha: 1.00)
     public static let blueOil: UIColor = UIColor(red:0.25, green:0.63, blue:0.71, alpha:1.00)

@@ -11,30 +11,27 @@ import RxRelay
 class ReposGitUsersByLanguageListMainView: UIView {
     
     //MARK: - Components
-    private lazy var tableview: UITableView = {
+    public lazy var tableview: UITableView = {
         let v = UITableView()
         v.showsVerticalScrollIndicator = false
         v.separatorStyle = .none
         v.register(ReposGitUsersByLanguageListCell.self, forCellReuseIdentifier: ReposGitUsersByLanguageListCell.reuseIdentifier)
         v.delegate = self
         v.dataSource = self
+        v.reloadData()
         return v
     }()
     
     //MARK: - Variables
-    private(set) public var didTapSelectUserObservable = BehaviorRelay<Bool>(value: false)
+    private(set) public var didTapSelectUserObservable = BehaviorRelay<(Bool, Items?)>(value:( false, nil))
+    private var viewModel: ReposGitUserByLanguageViewModelProtocol?
     
     //MARK: - Initializers
-    override init(frame: CGRect) {
-        super.init(frame: frame)
+    convenience init(viewModel: ReposGitUserByLanguageViewModelProtocol?) {
+        self.init()
+        self.viewModel = viewModel
         setupView()
     }
-    
-    required init(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
-    
 }
 
 //MARK: - Auto Layout
@@ -63,13 +60,12 @@ extension ReposGitUsersByLanguageListMainView {
 extension ReposGitUsersByLanguageListMainView: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+        return viewModel?.repositoriesData?.items?.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableview.dequeueReusableCell(withIdentifier: ReposGitUsersByLanguageListCell.reuseIdentifier, for: indexPath) as? ReposGitUsersByLanguageListCell else { return UITableViewCell() }
-        
-        cell.reposContents = "Teste"
+        guard let cell = tableview.dequeueReusableCell(withIdentifier: ReposGitUsersByLanguageListCell.reuseIdentifier, for: indexPath) as? ReposGitUsersByLanguageListCell, let items = viewModel?.repositoriesData?.items else { return UITableViewCell() }
+        cell.reposContents = items[indexPath.row]
         return cell
     }
     
@@ -78,11 +74,6 @@ extension ReposGitUsersByLanguageListMainView: UITableViewDelegate, UITableViewD
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        didTapSelectUserObservable.accept(true)
+        didTapSelectUserObservable.accept((true, viewModel?.repositoriesData?.items?[indexPath.row]))
     }
-    
-    
-    
-    
-    
 }

@@ -9,10 +9,10 @@ import UIKit
 import RxRelay
 
 enum TypeButtonTapped {
-    case swiftButton
-    case objectiveCButton
-    case javaButton
-    case javaScriptButton
+    case swiftButton(language: String)
+    case objectiveCButton(language: String)
+    case javaButton(language: String)
+    case javaScriptButton(language: String)
     case `default`
 }
 
@@ -91,24 +91,22 @@ class ReposGitMenuMainView: UIView {
     //MARK: - Actions
     @objc
     private func didTapSwiftButton() {
-        print("swift button")
-        buttonTypeTapped.accept(.swiftButton)
+        buttonTypeTapped.accept(.swiftButton(language: "swift"))
     }
     
     @objc
     private func didTapObjectiveCButton() {
-        print("objectiveC button")
-        buttonTypeTapped.accept(.objectiveCButton)
+        buttonTypeTapped.accept(.objectiveCButton(language: "objectiveC"))
     }
     
     @objc
     private func didTapJavaButton() {
-        buttonTypeTapped.accept(.javaButton)
+        buttonTypeTapped.accept(.javaButton(language: "java"))
     }
     
     @objc
     private func didTapJavaScriptButton() {
-        buttonTypeTapped.accept(.javaScriptButton)
+        buttonTypeTapped.accept(.javaScriptButton(language: "javaScript"))
     }
 }
 

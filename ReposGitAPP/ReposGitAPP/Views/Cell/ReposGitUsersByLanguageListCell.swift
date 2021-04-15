@@ -29,8 +29,8 @@ class ReposGitUsersByLanguageListCell: UITableViewCell {
                         spacing: 10,
                         arrangedSubviews:
                             [
-                                starImageView,
-                                starCountLabel
+                                iconImageView,
+                                countLabel
                             ]
                         ,
                         alignment: .center)
@@ -42,12 +42,12 @@ class ReposGitUsersByLanguageListCell: UITableViewCell {
         return v
     }()
     
-    private let nameLabel = UILabel(font: UIFont().mainFontApp(size: 12), textColor: UIColor.black)
-    private let repoLabel = UILabel(font: UIFont().mainFontApp(size: 12), textColor: UIColor.black)
-    private let starCountLabel = UILabel(font: UIFont().mainFontApp(size: 12), textColor: UIColor.black)
+    private let nameLabel = UILabel(font: UIFont().mainFontApp(size: 12), textColor: UIColor.black, numberOfLines: 0)
+    private let repoLabel = UILabel(font: UIFont().mainFontApp(size: 12), textColor: UIColor.black, numberOfLines: 0)
+    private let countLabel = UILabel(font: UIFont().mainFontApp(size: 12), textColor: UIColor.black)
 
-    private let starImageView: UIImageView = {
-        let v = UIImageView(image: UIImage(named: "star"))
+    private let iconImageView: UIImageView = {
+        let v = UIImageView(image: UIImage(named: "fork"))
         v.heightAnchor.constraint(equalToConstant: 25).isActive = true
         v.widthAnchor.constraint(equalToConstant: 25).isActive = true
         return v
@@ -62,7 +62,7 @@ class ReposGitUsersByLanguageListCell: UITableViewCell {
     //MARK: - Variables
     static let reuseIdentifier = "ReposGitUsersByLanguageListCell"
 
-    public var reposContents: String? {
+    public var reposContents: Items? {
         didSet {
             setupView()
             setupContents()
@@ -70,24 +70,12 @@ class ReposGitUsersByLanguageListCell: UITableViewCell {
     }
 
     //MARK: - Custom Methods
-    
     private func setupContents() {
-        //imgview.loadSDWebImage(imageView: imgview, string: item.owner.avatarUrl)
-        avatarImageView.image = UIImage(named: "star")
-        nameLabel.text = "Name: VSouza" //\(item.owner.login)"
-        repoLabel.text = "Repo: tRxSwiftXX " //\(item.name)"
-        starCountLabel.text = "33322" //"\(item.stargazers_count)"
+        avatarImageView.loadSDWebImage(imageView: avatarImageView, string: reposContents?.owner?.avatarUrl ?? "")
+        nameLabel.text = "Login: \(reposContents?.owner?.login ?? "-")"
+        repoLabel.text = "Nome: \(reposContents?.name ?? "-")"
+        countLabel.text = "Forks: \(reposContents?.forks ?? 0)"
     }
-    
-//    func setupCell(item: Items){
-//
-//        imgview.loadSDWebImage(imageView: imgview, string: item.owner.avatarUrl)
-//        labelName.text = "Name: \(item.owner.login)"
-//        labelRepo.text = "Repo: \(item.name)"
-//        labelStarCount.text = "\(item.stargazers_count)"
-//
-//    }
-    
 }
 
 //MARK: - Auto Layout

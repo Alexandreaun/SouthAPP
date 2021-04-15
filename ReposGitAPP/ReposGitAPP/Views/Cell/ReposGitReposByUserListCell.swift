@@ -21,21 +21,31 @@ class ReposGitReposByUserListCell: UITableViewCell {
     
     private lazy var contentsStackView = UIStackView(
         axis: .vertical,
-        spacing: 8,
+        spacing: 10,
         arrangedSubviews:
             [
                 nameLabel,
-                repoLabel
+                repoLabel,
+                UIStackView(
+                    spacing: 10,
+                    arrangedSubviews:
+                        [
+                            iconImageView,
+                            countLabel
+                        ]
+                    ,
+                    alignment: .center)
             ]
         ,
         alignment: .leading
     )
     
-    private let nameLabel = UILabel(font: UIFont().mainFontApp(size: 12), textColor: UIColor.black)
-    private let repoLabel = UILabel(font: UIFont().mainFontApp(size: 12), textColor: UIColor.black)
+    private let nameLabel = UILabel(font: UIFont().mainFontApp(size: 12), textColor: UIColor.black, numberOfLines: 0)
+    private lazy var repoLabel = UILabel(font: UIFont().mainFontApp(size: 12), textColor: isPrivateRepo() ? UIColor.red : UIColor.green, numberOfLines: 0)
+    private let countLabel = UILabel(font: UIFont().mainFontApp(size: 12), textColor: UIColor.black)
 
-    private let starImageView: UIImageView = {
-        let v = UIImageView(image: UIImage(named: "star"))
+    private let iconImageView: UIImageView = {
+        let v = UIImageView(image: UIImage(named: "fork"))
         v.heightAnchor.constraint(equalToConstant: 25).isActive = true
         v.widthAnchor.constraint(equalToConstant: 25).isActive = true
         return v
@@ -50,7 +60,7 @@ class ReposGitReposByUserListCell: UITableViewCell {
     //MARK: - Variables
     static let reuseIdentifier = "ReposGitReposByUserListCell"
 
-    public var reposContents: String? {
+    public var reposContents: Items? {
         didSet {
             setupView()
             setupContents()
@@ -58,23 +68,19 @@ class ReposGitReposByUserListCell: UITableViewCell {
     }
 
     //MARK: - Custom Methods
-    
     private func setupContents() {
-        //imgview.loadSDWebImage(imageView: imgview, string: item.owner.avatarUrl)
-        avatarImageView.image = UIImage(named: "star")
-        nameLabel.text = "Repo Name: AlamofireImage" //\(name)"
-        repoLabel.text = "AlamofireImage is an image component library for Alamofire" //\(description)"
+        avatarImageView.loadSDWebImage(imageView: avatarImageView, string: reposContents?.owner?.avatarUrl ?? "")
+        nameLabel.text = "Nome Repo: \(reposContents?.name ?? "-")"
+        countLabel.text = "Forks: \(reposContents?.forks ?? 0)"
+        if let privateRepo = reposContents?.privateRepo {
+            repoLabel.text = "\((privateRepo) ? "Private" : "Public")"
+        }
     }
     
-//    func setupCell(item: Items){
-//
-//        imgview.loadSDWebImage(imageView: imgview, string: item.owner.avatarUrl)
-//        labelName.text = "Name: \(item.owner.login)"
-//        labelRepo.text = "Repo: \(item.name)"
-//        labelStarCount.text = "\(item.stargazers_count)"
-//
-//    }
-    
+    private func isPrivateRepo() -> Bool {
+        guard let privateRepo = reposContents?.privateRepo else { return false }
+        return privateRepo
+    }
 }
 
 //MARK: - Auto Layout
