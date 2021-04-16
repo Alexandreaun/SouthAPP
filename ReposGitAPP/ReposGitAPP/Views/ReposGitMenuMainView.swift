@@ -70,9 +70,7 @@ class ReposGitMenuMainView: UIView {
     }()
     
     //MARK: - Variables
-    private var isIPhone_5_5s_5c_SE: Bool {
-        return UIScreen.main.nativeBounds.height == 1136
-    }
+    private var isIPhone_5_5s_5c_SE: Bool { UIScreen.main.nativeBounds.height == 1136 }
     private(set) public var buttonTypeTapped = BehaviorRelay<TypeButtonTapped>(value: TypeButtonTapped.default)
     
     //MARK: - Initializers
@@ -84,9 +82,6 @@ class ReposGitMenuMainView: UIView {
     required init(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
-    //MARK: - Custom Methods
-    
     
     //MARK: - Actions
     @objc

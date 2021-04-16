@@ -16,7 +16,7 @@ class ReposGitMenuViewController: BaseViewController {
     
     //MARK: - Variables
     private let disposeBagUI = DisposeBag()
-
+    
     //MARK: - Initializer
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)

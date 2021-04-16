@@ -6,14 +6,16 @@
 //
 
 import UIKit
+import RxSwift
 
 class ReposGitRepoDetailViewController: UIViewController {
     
     //MARK: - Components
-    private(set) lazy var mainView = ReposGitRepoDetailMainView()
+    private(set) lazy var mainView = ReposGitRepoDetailMainView(viewModel: viewModel)
     
     //MARK: - Variables
     var viewModel: ReposGitDetailViewModelProtocol?
+    private let disposeBagUI = DisposeBag()
     
     //MARK: - Initializers
     convenience init(viewModel: ReposGitDetailViewModelProtocol?) {
@@ -27,9 +29,4 @@ class ReposGitRepoDetailViewController: UIViewController {
         super.loadView()
         view = mainView
     }
-    
-    
-    //MARK: - Custom Methods
-
-    
 }

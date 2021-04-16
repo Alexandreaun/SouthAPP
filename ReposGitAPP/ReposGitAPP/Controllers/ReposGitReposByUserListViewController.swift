@@ -31,10 +31,10 @@ class ReposGitReposByUserListViewController: BaseViewController {
         super.loadView()
         view = mainView
     }
-
+    
     //MARK: - Custom Methods
     private func bind() {
-
+        
         viewModelDetail.state.asObservable()
             .observeOn(MainScheduler.instance)
             .subscribe { [weak self] (state) in
@@ -42,7 +42,7 @@ class ReposGitReposByUserListViewController: BaseViewController {
                 switch state {
                 case .next(ReposGitDetailViewModelState.getRepoDetail):
                     let vc = ReposGitRepoDetailViewController(viewModel: self.viewModelDetail)
-                    self.navigationController?.pushViewController(vc, animated: true)
+                    self.present(vc, animated: true, completion: nil)
                 case .next(ReposGitDetailViewModelState.isLoading(let isShow)):
                     isShow ? self.showLoadingAnimation() : self.hiddenLoadingAnimation()
                 case .next(ReposGitDetailViewModelState.error):
@@ -54,7 +54,7 @@ class ReposGitReposByUserListViewController: BaseViewController {
                 case .completed:
                     break
                 }
-            }
+            }.disposed(by: disposeBagUI)
         
         mainView
             .didTapSelectRepoObservable
