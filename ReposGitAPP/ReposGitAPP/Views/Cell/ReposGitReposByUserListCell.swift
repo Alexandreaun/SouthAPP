@@ -8,7 +8,7 @@
 import UIKit
 
 class ReposGitReposByUserListCell: UITableViewCell {
-        
+    
     //MARK: - Components
     private let avatarImageView: UIImageView = {
         let imv = UIImageView()
@@ -43,7 +43,7 @@ class ReposGitReposByUserListCell: UITableViewCell {
     private let nameLabel = UILabel(font: UIFont().mainFontApp(size: 12), textColor: UIColor.black, numberOfLines: 0)
     private lazy var repoLabel = UILabel(font: UIFont().mainFontApp(size: 12), textColor: isPrivateRepo() ? UIColor.red : UIColor.green, numberOfLines: 0)
     private let countLabel = UILabel(font: UIFont().mainFontApp(size: 12), textColor: UIColor.black)
-
+    
     private let iconImageView: UIImageView = {
         let v = UIImageView(image: UIImage(named: "fork"))
         v.heightAnchor.constraint(equalToConstant: 25).isActive = true
@@ -59,14 +59,13 @@ class ReposGitReposByUserListCell: UITableViewCell {
     
     //MARK: - Variables
     static let reuseIdentifier = "ReposGitReposByUserListCell"
-
     public var reposContents: Items? {
         didSet {
             setupView()
             setupContents()
         }
     }
-
+    
     //MARK: - Custom Methods
     private func setupContents() {
         avatarImageView.loadSDWebImage(imageView: avatarImageView, string: reposContents?.owner?.avatarUrl ?? "")
@@ -88,6 +87,7 @@ extension ReposGitReposByUserListCell {
     private func setupView() {
         buildHierarquie()
         setupConstraints()
+        setupAditionalConfigurations()
     }
     
     private func buildHierarquie() {
@@ -113,13 +113,16 @@ extension ReposGitReposByUserListCell {
             lineDivider.widthAnchor.constraint(equalToConstant: 1),
             lineDivider.bottomAnchor.constraint(equalTo: avatarImageView.bottomAnchor, constant: 0)
         ])
-
+        
         contentsStackView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             contentsStackView.centerYAnchor.constraint(equalTo: centerYAnchor, constant: 0),
             contentsStackView.leadingAnchor.constraint(equalTo: lineDivider.trailingAnchor, constant: 25),
             contentsStackView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: 0)
         ])
+    }
+    private func setupAditionalConfigurations() {
+        self.backgroundColor = .lightGray
     }
 }
 

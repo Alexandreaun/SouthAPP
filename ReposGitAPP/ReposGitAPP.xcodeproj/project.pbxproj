@@ -18,6 +18,7 @@
 		7A63EE3C262724C8008ADDC1 /* UIViewController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A63EE3B262724C8008ADDC1 /* UIViewController+Extensions.swift */; };
 		7A6D3F63262674C8004499E3 /* ReposGitWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A6D3F62262674C8004499E3 /* ReposGitWorker.swift */; };
 		7A6D3F6726268848004499E3 /* ReposGitUserByLanguageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A6D3F6626268848004499E3 /* ReposGitUserByLanguageViewModel.swift */; };
+		7A6F5F02262934A700E6789C /* ReposGitDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A6F5F01262934A700E6789C /* ReposGitDetails.swift */; };
 		7A70E3D126228925001F051E /* ReposGitMenuMainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A70E3D026228925001F051E /* ReposGitMenuMainView.swift */; };
 		7A70E3D726229416001F051E /* UIStackView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A70E3D626229416001F051E /* UIStackView+Extensions.swift */; };
 		7A72B9CB262336AF00B4E308 /* UIColor+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A72B9CA262336AF00B4E308 /* UIColor+Extensions.swift */; };
@@ -51,6 +52,7 @@
 		7A63EE3B262724C8008ADDC1 /* UIViewController+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extensions.swift"; sourceTree = "<group>"; };
 		7A6D3F62262674C8004499E3 /* ReposGitWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReposGitWorker.swift; sourceTree = "<group>"; };
 		7A6D3F6626268848004499E3 /* ReposGitUserByLanguageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReposGitUserByLanguageViewModel.swift; sourceTree = "<group>"; };
+		7A6F5F01262934A700E6789C /* ReposGitDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReposGitDetails.swift; sourceTree = "<group>"; };
 		7A70E3D026228925001F051E /* ReposGitMenuMainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReposGitMenuMainView.swift; sourceTree = "<group>"; };
 		7A70E3D626229416001F051E /* UIStackView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStackView+Extensions.swift"; sourceTree = "<group>"; };
 		7A72B9CA262336AF00B4E308 /* UIColor+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extensions.swift"; sourceTree = "<group>"; };
@@ -177,6 +179,7 @@
 			children = (
 				7ADC29BD2621437D0013F071 /* ValidationError.swift */,
 				7A56E9CC2625282200F70422 /* RepositoriesGitModel.swift */,
+				7A6F5F01262934A700E6789C /* ReposGitDetails.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -343,6 +346,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7A63EE3C262724C8008ADDC1 /* UIViewController+Extensions.swift in Sources */,
+				7A6F5F02262934A700E6789C /* ReposGitDetails.swift in Sources */,
 				7ADC29B7262142620013F071 /* CustomButton.swift in Sources */,
 				7A552A672627EAC400D5DD9D /* ReposGitDetailViewModel.swift in Sources */,
 				7A72B9D226236AF400B4E308 /* ReposGitUsersByLanguageListCell.swift in Sources */,

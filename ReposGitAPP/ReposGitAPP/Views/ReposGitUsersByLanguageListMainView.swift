@@ -25,6 +25,7 @@ class ReposGitUsersByLanguageListMainView: UIView {
     //MARK: - Variables
     private(set) public var didTapSelectUserObservable = BehaviorRelay<(Bool, Items?)>(value:( false, nil))
     private var viewModel: ReposGitUserByLanguageViewModelProtocol?
+    private var isIPhone_5_5s_5c_SE: Bool { UIScreen.main.nativeBounds.height == 1136 }
     
     //MARK: - Initializers
     convenience init(viewModel: ReposGitUserByLanguageViewModelProtocol?) {
@@ -39,6 +40,7 @@ extension ReposGitUsersByLanguageListMainView {
     private func setupView() {
         buildHierarquie()
         setupConstraints()
+        setupAditionalConfigurations()
     }
     
     private func buildHierarquie() {
@@ -48,11 +50,15 @@ extension ReposGitUsersByLanguageListMainView {
     private func setupConstraints() {
         tableview.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            tableview.topAnchor.constraint(equalTo: topAnchor, constant: 90),
+            tableview.topAnchor.constraint(equalTo: topAnchor, constant: isIPhone_5_5s_5c_SE ? 68 : 90),
             tableview.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 0),
             tableview.trailingAnchor.constraint(equalTo: trailingAnchor, constant: 0),
             tableview.bottomAnchor.constraint(equalTo: bottomAnchor, constant: 0)
         ])
+    }
+    
+    private func setupAditionalConfigurations() {
+        self.backgroundColor = .lightGray
     }
 }
 
