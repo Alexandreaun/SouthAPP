@@ -22,6 +22,10 @@ class ReposGitUsersByLanguageListMainView: UIView {
         return v
     }()
     
+    // MARK: - Banana
+    
+    var teste = "teste"
+    
     //MARK: - Variables
     private(set) public var didTapSelectUserObservable = BehaviorRelay<(Bool, Items?)>(value:( false, nil))
     private var viewModel: ReposGitUserByLanguageViewModelProtocol?
